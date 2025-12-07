@@ -14,12 +14,11 @@
 }
 
 .leaderboard-container h1 {
-  font-size: 3rem;
+  font-size: 2rem;
   margin-bottom: 2rem;
-  background: linear-gradient(45deg, #ffd700, #ffa500);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 0 4px 12px rgba(255, 215, 0, 0.2);
+  color: #ffd700;
+  text-shadow: 0 4px 12px rgba(255, 215, 0, 0.4);
+  white-space: nowrap;
 }
 
 .scores-list {
@@ -226,7 +225,7 @@
   }
 
   .leaderboard-header h1 {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 
   .leaderboard-tabs {
