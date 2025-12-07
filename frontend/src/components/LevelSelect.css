@@ -31,10 +31,11 @@
   justify-content: space-between;
   gap: 2px;
   padding: 8px 6px;
+  padding-top: 24px;
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   position: relative;
-  overflow: visible;
+  overflow: hidden;
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
   border: 2px solid rgba(255, 215, 0, 0.2);
   border-radius: var(--radius-lg);
@@ -385,12 +386,13 @@
 }
 
 .level-info h3 {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   margin-bottom: 2px;
   line-height: 1.2;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  hyphens: auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
 }
 
 .level-info p {
@@ -634,16 +636,16 @@
 
 .boss-badge {
   position: absolute;
-  top: -5px;
-  right: -5px;
+  top: 2px;
+  right: 2px;
   background: linear-gradient(135deg, #ff6b35, #ff8c00);
   color: white;
-  padding: 4px 10px;
-  border-radius: 12px;
-  font-size: 0.7rem;
+  padding: 2px 6px;
+  border-radius: 8px;
+  font-size: 0.55rem;
   font-weight: bold;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
   z-index: 5;
   box-shadow: 0 2px 8px rgba(255, 107, 53, 0.5);
 }
