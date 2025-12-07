@@ -1,0 +1,203 @@
+.combo-display {
+  position: fixed;
+  top: 150px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-md) var(--spacing-xl);
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: var(--radius-xl);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  z-index: 100;
+  animation: comboAppear 0.3s ease-out;
+}
+
+@keyframes comboAppear {
+  from {
+    transform: translateX(-50%) scale(0.5);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(-50%) scale(1);
+    opacity: 1;
+  }
+}
+
+.combo-display.animate {
+  animation: comboPop 0.3s ease-out;
+}
+
+@keyframes comboPop {
+  0% {
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    transform: translateX(-50%) scale(1.1);
+  }
+  100% {
+    transform: translateX(-50%) scale(1);
+  }
+}
+
+/* Tier Colors */
+.combo-display.tier-normal {
+  border: 2px solid #888;
+  box-shadow: 0 0 20px rgba(136, 136, 136, 0.3);
+}
+
+.combo-display.tier-good {
+  border: 2px solid #4caf50;
+  box-shadow: 0 0 20px rgba(76, 175, 80, 0.4);
+}
+
+.combo-display.tier-rare {
+  border: 2px solid #2196f3;
+  box-shadow: 0 0 25px rgba(33, 150, 243, 0.5);
+}
+
+.combo-display.tier-epic {
+  border: 2px solid #9c27b0;
+  box-shadow: 0 0 30px rgba(156, 39, 176, 0.6);
+  animation: epicGlow 1s ease-in-out infinite;
+}
+
+.combo-display.tier-legendary {
+  border: 2px solid var(--color-gold);
+  box-shadow: 0 0 40px rgba(255, 215, 0, 0.7), inset 0 0 20px rgba(255, 215, 0, 0.2);
+  animation: legendaryGlow 0.5s ease-in-out infinite;
+}
+
+@keyframes epicGlow {
+  0%,
+  100% {
+    box-shadow: 0 0 30px rgba(156, 39, 176, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 50px rgba(156, 39, 176, 0.9);
+  }
+}
+
+@keyframes legendaryGlow {
+  0%,
+  100% {
+    box-shadow: 0 0 40px rgba(255, 215, 0, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 60px rgba(255, 215, 0, 1);
+  }
+}
+
+.combo-flames {
+  font-size: 1.5rem;
+  line-height: 1;
+  animation: flameWave 0.5s ease-in-out infinite;
+}
+
+@keyframes flameWave {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+.combo-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.combo-count {
+  font-size: 3rem;
+  font-weight: bold;
+  font-family: var(--font-display);
+  line-height: 1;
+}
+
+.tier-normal .combo-count {
+  color: #888;
+}
+.tier-good .combo-count {
+  color: #4caf50;
+}
+.tier-rare .combo-count {
+  color: #2196f3;
+}
+.tier-epic .combo-count {
+  color: #9c27b0;
+}
+.tier-legendary .combo-count {
+  background: linear-gradient(45deg, #ffd700, #ffa500, #ffd700);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: goldShimmer 1s linear infinite;
+}
+
+@keyframes goldShimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+.combo-label {
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: white;
+}
+
+.combo-multiplier {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--spacing-xs) var(--spacing-md);
+  background: rgba(255, 215, 0, 0.2);
+  border-radius: var(--radius-md);
+  margin-top: var(--spacing-xs);
+}
+
+.multiplier-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--color-gold);
+}
+
+.multiplier-label {
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--color-gold-light);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .combo-display {
+    top: 120px;
+    padding: var(--spacing-sm) var(--spacing-lg);
+  }
+
+  .combo-count {
+    font-size: 2rem;
+  }
+
+  .combo-label {
+    font-size: 0.75rem;
+  }
+
+  .combo-flames {
+    font-size: 1.2rem;
+  }
+}
