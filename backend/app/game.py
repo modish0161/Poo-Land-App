@@ -22,21 +22,32 @@ def create_new_game(level: int = 1, rows: int = 15, cols: int = 15) -> dict:
     """
     game_id = str(uuid.uuid4())
     
-    # Scale difficulty based on level
+    # Scale difficulty based on level and ensures dimensions are odd
     actual_rows = min(rows + (level - 1) * 2, 25)
     actual_cols = min(cols + (level - 1) * 2, 25)
+    actual_rows = (actual_rows // 2) * 2 + 1
+    actual_cols = (actual_cols // 2) * 2 + 1
     
-    # Generate maze
-    maze_layout = generate_random_maze(actual_rows, actual_cols)
-    maze_grid = create_maze_grid(maze_layout)
-    
-    # Get food positions
-    food_positions = get_all_food_positions(maze_grid)
-    
-    # Calculate optimal path
-    start_cell = (0, 0)
-    goal_cell = (actual_cols - 1, actual_rows - 1)
-    optimal_path = build_collector_path(maze_grid, start_cell, food_positions, goal_cell)
+    # Retry loop to ensure a solvable maze is generated
+    max_retries = 10
+    for _ in range(max_retries):
+        # Generate maze
+        maze_layout = generate_random_maze(actual_rows, actual_cols)
+        maze_grid = create_maze_grid(maze_layout)
+        
+        # Get food positions
+        food_positions = get_all_food_positions(maze_grid)
+        
+        # Calculate optimal path
+        start_cell = (0, 0)
+        goal_cell = (actual_cols - 1, actual_rows - 1)
+        optimal_path = build_collector_path(maze_grid, start_cell, food_positions, goal_cell)
+        
+        if optimal_path: # Success!
+            break
+    else:
+        # Fallback if somehow 10 attempts fail (logically rare with iterative DFS)
+        print(f"CRITICAL: Failed to generate a solvable maze after {max_retries} attempts")
     
     game_state = {
         'id': game_id,

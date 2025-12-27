@@ -12,31 +12,44 @@ FOOD_EMOJIS = [
 
 def generate_random_maze(rows: int, cols: int) -> List[List[str]]:
     """
-    Generate a random maze using recursive DFS.
+    Generate a random maze using an iterative DFS (stack-based).
     Returns a 2D list of '#' (walls) or '.' (paths).
     Post-processes to add loops and alternative paths for better gameplay.
     """
+    # Ensure dimensions are odd for the carving algorithm
+    rows = (rows // 2) * 2 + 1
+    cols = (cols // 2) * 2 + 1
+    
     maze = [['#' for _ in range(cols)] for _ in range(rows)]
     directions = [(-1, 0), (0, 1), (1, 0), (0, -1)]
     
     def in_bounds(x: int, y: int) -> bool:
         return 0 <= x < cols and 0 <= y < rows
     
-    def carve(x: int, y: int):
-        maze[y][x] = '.'
-        random.shuffle(directions)
+    # Starting point (0, 0)
+    maze[0][0] = '.'
+    stack = [(0, 0)]
+    
+    while stack:
+        x, y = stack[-1]
         
+        # Check for unvisited neighbors at distance 2
+        neighbors = []
         for dx, dy in directions:
             nx, ny = x + 2*dx, y + 2*dy
             if in_bounds(nx, ny) and maze[ny][nx] == '#':
-                maze[y + dy][x + dx] = '.'
-                carve(nx, ny)
-    
-    # Start carving from top-left corner
-    carve(0, 0)
+                neighbors.append((dx, dy))
+        
+        if neighbors:
+            dx, dy = random.choice(neighbors)
+            # Carve through
+            maze[y + dy][x + dx] = '.'
+            maze[y + 2*dy][x + 2*dx] = '.'
+            stack.append((x + 2*dx, y + 2*dy))
+        else:
+            stack.pop()
     
     # IMPORTANT: Remove random walls to create loops and alternative paths
-    # This allows players to escape from ghosts more easily
     walls_to_remove = []
     for y in range(1, rows - 1):
         for x in range(1, cols - 1):
