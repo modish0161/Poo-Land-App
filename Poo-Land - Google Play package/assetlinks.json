@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "com.indigopascal.poolandmaze",
+        "sha256_cert_fingerprints": ["B9:04:F4:D7:21:86:A0:C2:3A:95:FE:34:11:C3:A9:E3:75:CA:01:68:81:EC:1F:CA:73:E8:7C:C9:2F:E7:20:1E"]
+      }
+    }]
