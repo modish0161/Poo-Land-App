@@ -198,7 +198,7 @@ const GameBoard = () => {
 
         // Generate local maze (simplified for now)
         const response = await fetch(
-          `${import.meta.env.VITE_API_URL || 'http://localhost:5000/api'}/game/new`,
+          `${import.meta.env.VITE_API_URL || 'http://localhost:5050/api'}/game/new`,
           {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },

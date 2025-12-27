@@ -636,16 +636,16 @@
 
 .boss-badge {
   position: absolute;
-  top: 2px;
-  right: 2px;
+  top: 6px;
+  right: 6px;
   background: linear-gradient(135deg, #ff6b35, #ff8c00);
   color: white;
-  padding: 2px 6px;
-  border-radius: 8px;
-  font-size: 0.55rem;
+  padding: 2px 5px;
+  border-radius: 6px;
+  font-size: 0.5rem;
   font-weight: bold;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.3px;
   z-index: 5;
   box-shadow: 0 2px 8px rgba(255, 107, 53, 0.5);
 }
