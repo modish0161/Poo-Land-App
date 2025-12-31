@@ -6,20 +6,25 @@
   "start_url": "/",
   "scope": "/",
   "display": "fullscreen",
-  "display_override": ["fullscreen", "standalone"],
+  "display_override": ["fullscreen", "standalone", "minimal-ui"],
   "background_color": "#1a0a0f",
   "theme_color": "#FFD700",
   "orientation": "any",
   "lang": "en",
   "dir": "ltr",
   "categories": ["games", "entertainment"],
-  "iarc_rating_id": "",
+  "iarc_rating_id": "e84b072d-71b3-4d3e-86ae-31a8ce4e53b7",
   "prefer_related_applications": false,
   "related_applications": [
     {
       "platform": "play",
       "url": "https://play.google.com/store/apps/details?id=com.indigopascal.poolandmaze",
       "id": "com.indigopascal.poolandmaze"
+    }
+  ],
+  "scope_extensions": [
+    {
+      "origin": "https://poo-land-app.vercel.app"
     }
   ],
   "icons": [
@@ -76,9 +81,48 @@
           "sizes": "192x192"
         }
       ]
+    },
+    {
+      "name": "Leaderboard",
+      "short_name": "Scores",
+      "description": "View high scores",
+      "url": "/leaderboard",
+      "icons": [
+        {
+          "src": "/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
     }
   ],
+  "file_handlers": [
+    {
+      "action": "/",
+      "accept": {
+        "application/json": [".json"]
+      }
+    }
+  ],
+  "protocol_handlers": [
+    {
+      "protocol": "web+pooland",
+      "url": "/?level=%s"
+    }
+  ],
+  "share_target": {
+    "action": "/",
+    "method": "GET",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  },
   "launch_handler": {
     "client_mode": "navigate-existing"
+  },
+  "handle_links": "preferred",
+  "edge_side_panel": {
+    "preferred_width": 400
   }
 }
