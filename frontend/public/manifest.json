@@ -6,7 +6,7 @@
   "start_url": "/",
   "scope": "/",
   "display": "fullscreen",
-  "display_override": ["fullscreen", "standalone", "minimal-ui"],
+  "display_override": ["fullscreen", "standalone", "minimal-ui", "window-controls-overlay"],
   "background_color": "#1a0a0f",
   "theme_color": "#FFD700",
   "orientation": "any",
@@ -75,32 +75,20 @@
       "short_name": "Play",
       "description": "Start playing Poo-Land Maze",
       "url": "/levels",
-      "icons": [
-        {
-          "src": "/icon-192.png",
-          "sizes": "192x192"
-        }
-      ]
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
     },
     {
       "name": "Leaderboard",
       "short_name": "Scores",
       "description": "View high scores",
       "url": "/leaderboard",
-      "icons": [
-        {
-          "src": "/icon-192.png",
-          "sizes": "192x192"
-        }
-      ]
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
     }
   ],
   "file_handlers": [
     {
       "action": "/",
-      "accept": {
-        "application/json": [".json"]
-      }
+      "accept": { "application/json": [".json"] }
     }
   ],
   "protocol_handlers": [
@@ -112,11 +100,7 @@
   "share_target": {
     "action": "/",
     "method": "GET",
-    "params": {
-      "title": "title",
-      "text": "text",
-      "url": "url"
-    }
+    "params": { "title": "title", "text": "text", "url": "url" }
   },
   "launch_handler": {
     "client_mode": "navigate-existing"
